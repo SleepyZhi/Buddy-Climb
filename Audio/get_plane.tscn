@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://83k8u1tr2ney"]
+
+[ext_resource type="AudioStream" uid="uid://dpglfd1vmibdq" path="res://Audio/Hits airplane.ogg" id="1_e3j5s"]
+[ext_resource type="Script" path="res://Scripts/get_plane.gd" id="2_sk64w"]
+
+[node name="GetPlane" type="AudioStreamPlayer"]
+stream = ExtResource("1_e3j5s")
+script = ExtResource("2_sk64w")

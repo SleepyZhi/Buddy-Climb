@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Buds Game"
+run/main_scene="res://Level/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Bgm="*res://Audio/bgm.tscn"
+ButtonSound="*res://Audio/button_sound.tscn"
+GetPlane="*res://Audio/get_plane.tscn"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/window_width_override=480
+window/size/window_height_override=800
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+driver/threads/thread_model=0
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.529412, 0.807843, 0.921569, 1)
+occlusion_culling/use_occlusion_culling=true

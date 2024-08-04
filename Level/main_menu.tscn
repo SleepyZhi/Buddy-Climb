@@ -1,0 +1,278 @@
+[gd_scene load_steps=29 format=3 uid="uid://ditsrlyvjn317"]
+
+[ext_resource type="PackedScene" uid="uid://dixx1iskvewpi" path="res://Level/level_1.tscn" id="1_ooj7v"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_q3cf1"]
+[ext_resource type="PackedScene" uid="uid://5tug3r3trx4q" path="res://Level/level_2.tscn" id="3_7a1ic"]
+[ext_resource type="Texture2D" uid="uid://b5jfcvcgj70sq" path="res://Assets/Title/Title.png" id="4_gl8n0"]
+[ext_resource type="Script" path="res://Scripts/word bounce.gd" id="5_lmjt7"]
+[ext_resource type="Texture2D" uid="uid://cag4xt7ucjchi" path="res://Assets/Title/Layer 20.png" id="5_ovbpu"]
+[ext_resource type="Texture2D" uid="uid://dojfcm1m3w4v2" path="res://Assets/Title/Layer 21.png" id="6_thin4"]
+[ext_resource type="Texture2D" uid="uid://cuokih1s0e0ek" path="res://Assets/Title/Layer 22.png" id="7_ds83l"]
+[ext_resource type="Texture2D" uid="uid://bby0vf6wrpvvk" path="res://Assets/Title/Layer 23 (2).png" id="9_a4jum"]
+[ext_resource type="Texture2D" uid="uid://cja7yeevedgxn" path="res://Assets/Title/Layer 24.png" id="10_4n50k"]
+[ext_resource type="Texture2D" uid="uid://b0eut66r5vcvc" path="res://Assets/Title/Layer 25 (2).png" id="11_kjv5e"]
+[ext_resource type="Texture2D" uid="uid://dxgdm5b86vgke" path="res://Assets/Title/Layer 26 (2).png" id="12_hty33"]
+[ext_resource type="Texture2D" uid="uid://cd70f6twfxlji" path="res://Assets/Buttons/Start Button.png" id="13_tc4s0"]
+[ext_resource type="Texture2D" uid="uid://b3ndb3fohcatl" path="res://Assets/Buttons/Start Button (2).png" id="14_5a6l7"]
+[ext_resource type="Texture2D" uid="uid://cy011wnk3xjh6" path="res://Assets/Buttons/Tutorial Button.png" id="15_w3di7"]
+[ext_resource type="Texture2D" uid="uid://1uuear2qa6u0" path="res://Assets/Buttons/Tutorial Button (2).png" id="16_52kc6"]
+[ext_resource type="Texture2D" uid="uid://0m2ksfl8tjt0" path="res://Assets/Buttons/Exit Button (1).png" id="17_0a2px"]
+[ext_resource type="Texture2D" uid="uid://b16cd08t76c24" path="res://Assets/Buttons/Exit Button (2).png" id="18_aogtv"]
+[ext_resource type="Texture2D" uid="uid://c6frbcaeeasem" path="res://Assets/TutorialBG.png" id="19_obi6v"]
+[ext_resource type="FontFile" uid="uid://dbq86pyo3kv6u" path="res://etc/fonts/Lexend-Medium.ttf" id="20_i0rkv"]
+[ext_resource type="Texture2D" uid="uid://bsu4asytq5gjn" path="res://Assets/airplane.png" id="21_b1gko"]
+[ext_resource type="Texture2D" uid="uid://d1sxdgysl14f8" path="res://Assets/circle rope thing.png" id="22_6txo7"]
+[ext_resource type="Texture2D" uid="uid://dbmwxam5thqek" path="res://Assets/thumbs.png" id="23_ceihi"]
+[ext_resource type="Texture2D" uid="uid://dpqek2hjvsdw3" path="res://Assets/Close Button.png" id="24_bmfbx"]
+[ext_resource type="Texture2D" uid="uid://7luivdidtx1v" path="res://Assets/Clicked Close Button.png" id="25_qi7so"]
+
+[sub_resource type="Animation" id="Animation_o8j3e"]
+resource_name = "tutorial"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hands and stuff:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(169, 109), Vector2(169, 446)]
+}
+
+[sub_resource type="Animation" id="Animation_4h1d8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hands and stuff:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(169, 109)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn7x3"]
+_data = {
+"RESET": SubResource("Animation_4h1d8"),
+"tutorial": SubResource("Animation_o8j3e")
+}
+
+[node name="Main Menu" type="Node2D" groups=["MainMenu"]]
+position = Vector2(581, 79)
+script = ExtResource("1_q3cf1")
+levels = Array[PackedScene]([ExtResource("1_ooj7v"), ExtResource("3_7a1ic")])
+offset = -2500.0
+speed = 500.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tittle" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.7, 0.7)
+
+[node name="B" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(375.643, 416.75)
+texture = ExtResource("4_gl8n0")
+script = ExtResource("5_lmjt7")
+
+[node name="u" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(590.393, 419.25)
+texture = ExtResource("5_ovbpu")
+script = ExtResource("5_lmjt7")
+
+[node name="d" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(805.393, 419.25)
+texture = ExtResource("6_thin4")
+script = ExtResource("5_lmjt7")
+
+[node name="d2" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(1015.39, 419.25)
+texture = ExtResource("6_thin4")
+script = ExtResource("5_lmjt7")
+
+[node name="y" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(1207.89, 419.25)
+texture = ExtResource("7_ds83l")
+script = ExtResource("5_lmjt7")
+
+[node name="c" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(375.643, 751.214)
+texture = ExtResource("9_a4jum")
+script = ExtResource("5_lmjt7")
+
+[node name="l" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(590.393, 753.714)
+texture = ExtResource("10_4n50k")
+script = ExtResource("5_lmjt7")
+
+[node name="i" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(768.571, 760)
+texture = ExtResource("11_kjv5e")
+script = ExtResource("5_lmjt7")
+
+[node name="m" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(941.429, 754.286)
+texture = ExtResource("12_hty33")
+script = ExtResource("5_lmjt7")
+
+[node name="b" type="Sprite2D" parent="CanvasLayer/Tittle"]
+position = Vector2(1182.86, 754.286)
+texture = ExtResource("4_gl8n0")
+script = ExtResource("5_lmjt7")
+
+[node name="Start" type="TextureButton" parent="CanvasLayer"]
+offset_left = 252.0
+offset_top = 861.0
+offset_right = 3142.0
+offset_bottom = 1994.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("13_tc4s0")
+texture_pressed = ExtResource("14_5a6l7")
+
+[node name="Tutorial Button" type="TextureButton" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 1115.0
+offset_right = 3140.0
+offset_bottom = 2248.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("15_w3di7")
+texture_pressed = ExtResource("16_52kc6")
+
+[node name="Exit Button" type="TextureButton" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 1286.0
+offset_right = 3140.0
+offset_bottom = 2419.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("17_0a2px")
+texture_pressed = ExtResource("18_aogtv")
+
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = -11.0
+offset_right = 40.0
+offset_bottom = 29.0
+
+[node name="BG" type="TextureRect" parent="CanvasLayer/Tutorial"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 112.0
+offset_right = 2338.0
+offset_bottom = 4204.0
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("19_obi6v")
+
+[node name="Label" type="Label" parent="CanvasLayer/Tutorial"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 177.0
+offset_right = 826.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_i0rkv")
+theme_override_font_sizes/font_size = 40
+text = "Click on the Buds to control them,
+they are only restricted by the 
+length of the rope"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Tutorial"]
+offset_left = 167.0
+offset_top = 1230.0
+offset_right = 893.0
+offset_bottom = 1386.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_i0rkv")
+theme_override_font_sizes/font_size = 40
+text = "When both buds are on a platform,
+pull down while holding both buds to
+go up"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Tutorial"]
+offset_left = 409.0
+offset_top = 1420.0
+offset_right = 1135.0
+offset_bottom = 1576.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_i0rkv")
+theme_override_font_sizes/font_size = 40
+text = "Collect airplanes to slow
+down the rising flood"
+
+[node name="PhoneBG" type="TextureRect" parent="CanvasLayer/Tutorial"]
+offset_left = 329.0
+offset_top = 342.0
+offset_right = 2555.0
+offset_bottom = 4434.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_obi6v")
+
+[node name="Plane" type="TextureRect" parent="CanvasLayer/Tutorial"]
+offset_left = 225.0
+offset_top = 1396.0
+offset_right = 1460.0
+offset_bottom = 2407.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("21_b1gko")
+
+[node name="Hands and stuff" type="Control" parent="CanvasLayer/Tutorial"]
+anchors_preset = 0
+offset_left = 169.0
+offset_top = 109.0
+offset_right = 209.0
+offset_bottom = 148.999
+
+[node name="circle thing" type="TextureRect" parent="CanvasLayer/Tutorial/Hands and stuff"]
+offset_left = 177.0
+offset_top = 535.0
+offset_right = 923.0
+offset_bottom = 727.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_6txo7")
+
+[node name="Hand" type="TextureRect" parent="CanvasLayer/Tutorial/Hands and stuff"]
+offset_left = 61.0
+offset_top = 561.0
+offset_right = 624.0
+offset_bottom = 1157.0
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("23_ceihi")
+
+[node name="Hand2" type="TextureRect" parent="CanvasLayer/Tutorial/Hands and stuff"]
+offset_left = 663.0
+offset_top = 561.0
+offset_right = 1226.0
+offset_bottom = 1157.0
+scale = Vector2(-0.355, 0.355)
+texture = ExtResource("23_ceihi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Tutorial"]
+libraries = {
+"": SubResource("AnimationLibrary_tn7x3")
+}
+autoplay = "tutorial"
+
+[node name="CloseButton" type="TextureButton" parent="CanvasLayer/Tutorial"]
+layout_mode = 1
+offset_left = 304.0
+offset_top = 1640.0
+offset_right = 1748.0
+offset_bottom = 2229.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("24_bmfbx")
+texture_pressed = ExtResource("25_qi7so")
+
+[connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/Tutorial Button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Tutorial/CloseButton" to="." method="_on_close_button_pressed"]

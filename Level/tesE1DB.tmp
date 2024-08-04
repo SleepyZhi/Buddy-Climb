@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn11d65ckqsxi"]
+
+[ext_resource type="Script" path="res://Scripts/GameHandler.gd" id="1_4euiy"]
+[ext_resource type="PackedScene" uid="uid://buq7oqdbto48n" path="res://Player/Rope/rope.tscn" id="1_rce8q"]
+[ext_resource type="PackedScene" uid="uid://dixx1iskvewpi" path="res://Level/level_1.tscn" id="2_a4f2y"]
+[ext_resource type="PackedScene" uid="uid://5tug3r3trx4q" path="res://Level/level_2.tscn" id="3_gtw4q"]
+[ext_resource type="FontFile" uid="uid://5bmljtrjoia5" path="res://etc/fonts/Lexend-Black.ttf" id="4_lp64x"]
+[ext_resource type="PackedScene" uid="uid://c2qfubavrsy2r" path="res://Assets/Nature/wave.tscn" id="7_xmr55"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="8_7h1ps"]
+
+[node name="Test Scene" type="Node2D" node_paths=PackedStringArray("holder", "holder2")]
+position = Vector2(495, 166)
+script = ExtResource("1_4euiy")
+levels = Array[PackedScene]([ExtResource("2_a4f2y"), ExtResource("3_gtw4q")])
+offset = -2500.0
+holder = NodePath("Rope/RopeHolder")
+holder2 = NodePath("Rope/RopeEnd")
+speed = 500.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 90
+text = "Score:
+0"
+
+[node name="Rope" parent="." instance=ExtResource("1_rce8q")]
+position = Vector2(-224, 1359)
+
+[node name="Wave" parent="." instance=ExtResource("7_xmr55")]
+z_index = 5
+position = Vector2(-545, 1283)
+script = ExtResource("8_7h1ps")
+initialSpeed = 100.0
+acceleration = 100.0
+rate = 1.0
+
+[editable path="Rope"]

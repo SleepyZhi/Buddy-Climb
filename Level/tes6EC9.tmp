@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://bn11d65ckqsxi"]
+
+[ext_resource type="Script" path="res://Scripts/GameHandler.gd" id="1_4euiy"]
+[ext_resource type="PackedScene" uid="uid://buq7oqdbto48n" path="res://Player/Rope/rope.tscn" id="1_rce8q"]
+[ext_resource type="PackedScene" uid="uid://dixx1iskvewpi" path="res://Level/level_1.tscn" id="2_a4f2y"]
+[ext_resource type="PackedScene" uid="uid://5tug3r3trx4q" path="res://Level/level_2.tscn" id="3_gtw4q"]
+[ext_resource type="Script" path="res://Scripts/ScoreHandler.gd" id="4_27q87"]
+[ext_resource type="FontFile" uid="uid://5bmljtrjoia5" path="res://etc/fonts/Lexend-Black.ttf" id="4_lp64x"]
+[ext_resource type="Texture2D" uid="uid://dkqtyidw2c40g" path="res://Assets/Buttons/Restart Button.png" id="5_1a367"]
+[ext_resource type="Texture2D" uid="uid://dh8lks0llm54f" path="res://Assets/Buttons/Restart Button 2.png" id="6_vn5al"]
+[ext_resource type="PackedScene" uid="uid://c2qfubavrsy2r" path="res://Assets/Nature/wave.tscn" id="7_xmr55"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="8_7h1ps"]
+[ext_resource type="Texture2D" uid="uid://0m2ksfl8tjt0" path="res://Assets/Buttons/Exit Button (1).png" id="8_hogpn"]
+[ext_resource type="Texture2D" uid="uid://b16cd08t76c24" path="res://Assets/Buttons/Exit Button (2).png" id="9_r7jtm"]
+
+[node name="Test Scene" type="Node2D" node_paths=PackedStringArray("holder", "holder2")]
+position = Vector2(495, 166)
+script = ExtResource("1_4euiy")
+levels = Array[PackedScene]([ExtResource("2_a4f2y"), ExtResource("3_gtw4q")])
+offset = -2500.0
+holder = NodePath("Rope/RopeHolder")
+holder2 = NodePath("Rope/RopeEnd")
+speed = 500.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_27q87")
+
+[node name="Lose Screen BG" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -86.0
+offset_top = -300.0
+offset_right = 1160.0
+offset_bottom = 1966.0
+color = Color(0, 0, 0, 0.360784)
+
+[node name="Restart Button" type="TextureButton" parent="CanvasLayer/Lose Screen BG"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 1843.0
+offset_right = 3174.0
+offset_bottom = 2551.0
+scale = Vector2(0.22, 0.22)
+texture_normal = ExtResource("5_1a367")
+texture_pressed = ExtResource("6_vn5al")
+
+[node name="High Score" type="Label" parent="CanvasLayer/Lose Screen BG"]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 522.0
+offset_right = 874.0
+offset_bottom = 751.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 90
+text = "HighScore:
+0"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="CanvasLayer/Lose Screen BG"]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 752.0
+offset_right = 764.0
+offset_bottom = 981.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 90
+text = "Score:
+0"
+horizontal_alignment = 1
+
+[node name="Exit Button" type="TextureButton" parent="CanvasLayer/Lose Screen BG"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 2030.0
+offset_right = 3176.0
+offset_bottom = 2738.0
+scale = Vector2(0.22, 0.22)
+texture_normal = ExtResource("8_hogpn")
+texture_pressed = ExtResource("9_r7jtm")
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 90
+text = "Score:
+0"
+
+[node name="WaveSpeed" type="Label" parent="CanvasLayer"]
+offset_left = 541.0
+offset_right = 1069.0
+offset_bottom = 229.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 90
+text = "Wavespeed"
+horizontal_alignment = 2
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Exit Button" type="TextureButton" parent="CanvasLayer/Pause"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 1730.0
+offset_right = 3090.0
+offset_bottom = 2438.0
+scale = Vector2(0.22, 0.22)
+texture_normal = ExtResource("8_hogpn")
+texture_pressed = ExtResource("9_r7jtm")
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 530.0
+offset_right = 1087.0
+offset_bottom = 733.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 80
+text = "Hold on both 
+buds to start"
+horizontal_alignment = 1
+
+[node name="High Score" type="Label" parent="CanvasLayer/Pause"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 214.0
+offset_right = 750.0
+offset_bottom = 443.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_lp64x")
+theme_override_font_sizes/font_size = 90
+text = "HighScore:
+0"
+horizontal_alignment = 1
+
+[node name="Rope" parent="." instance=ExtResource("1_rce8q")]
+position = Vector2(-224, 1359)
+
+[node name="RopeHolder" parent="Rope" index="0" node_paths=PackedStringArray("scene")]
+scene = NodePath("../..")
+
+[node name="Area2D" parent="Rope/RopeHolder" index="2" groups=["player"]]
+
+[node name="RopeEnd" parent="Rope" index="2" node_paths=PackedStringArray("scene")]
+scene = NodePath("../..")
+
+[node name="Area2D" parent="Rope/RopeEnd" index="2" groups=["player"]]
+
+[node name="Wave" parent="." node_paths=PackedStringArray("canvas") instance=ExtResource("7_xmr55")]
+z_index = 5
+position = Vector2(-545, 1283)
+script = ExtResource("8_7h1ps")
+initialSpeed = 10.0
+acceleration = 3.0
+rate = 1.0
+canvas = NodePath("../CanvasLayer")
+
+[connection signal="pressed" from="CanvasLayer/Lose Screen BG/Restart Button" to="CanvasLayer" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Lose Screen BG/Exit Button" to="CanvasLayer" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Exit Button" to="CanvasLayer" method="_on_exit_button_pressed"]
+[connection signal="area_entered" from="Wave" to="." method="_on_wave_area_entered"]
+
+[editable path="Rope"]

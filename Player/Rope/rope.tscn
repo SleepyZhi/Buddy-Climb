@@ -1,0 +1,209 @@
+[gd_scene load_steps=17 format=3 uid="uid://buq7oqdbto48n"]
+
+[ext_resource type="Script" path="res://Scripts/RopeHandler.gd" id="1_8b51h"]
+[ext_resource type="Script" path="res://Scripts/RopeHolder.gd" id="1_ij5bj"]
+[ext_resource type="PackedScene" uid="uid://cnyoitda5kehg" path="res://Player/Rope/rope_segment.tscn" id="2_dqag4"]
+[ext_resource type="Texture2D" uid="uid://dif6k0b8qryh4" path="res://Assets/Elephant.png" id="2_ux4wa"]
+[ext_resource type="Texture2D" uid="uid://utrpuy3fmnt3" path="res://Assets/Kid.png" id="3_wtn06"]
+[ext_resource type="Texture2D" uid="uid://bp6v7kv0vx7ts" path="res://Assets/Monki.png" id="4_g6g6k"]
+[ext_resource type="Texture2D" uid="uid://cgpcaphyj55v0" path="res://Assets/Tapir.png" id="5_enyte"]
+[ext_resource type="Texture2D" uid="uid://d4kpw7c7p8omb" path="res://Assets/Elephant Falling.png" id="7_lifjv"]
+[ext_resource type="Texture2D" uid="uid://confln00kj32b" path="res://Assets/Kid Falling.png" id="8_wqbis"]
+[ext_resource type="Texture2D" uid="uid://b8xgxsihvy35s" path="res://Assets/Monki Falling.png" id="9_er3a0"]
+[ext_resource type="Texture2D" uid="uid://dd82pel8d8mps" path="res://Assets/Tapir Falling.png" id="10_r1f8p"]
+[ext_resource type="Texture2D" uid="uid://gfjeja5xit2l" path="res://Assets/Droplets (2).png" id="11_pekvj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkmk8"]
+radius = 51.5
+height = 129.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctlog"]
+size = Vector2(129, 127)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwofg"]
+radius = 51.5
+height = 129.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b643p"]
+size = Vector2(129, 127)
+
+[node name="Rope" type="Node2D" node_paths=PackedStringArray("sprite1", "sprite2")]
+script = ExtResource("1_8b51h")
+sprite1 = NodePath("RopeHolder/Sprite2D")
+sprite2 = NodePath("RopeEnd/Sprite2D")
+sprites = Array[CompressedTexture2D]([ExtResource("2_ux4wa"), ExtResource("3_wtn06"), ExtResource("4_g6g6k"), ExtResource("5_enyte")])
+
+[node name="RopeHolder" type="CharacterBody2D" parent="." node_paths=PackedStringArray("other")]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ij5bj")
+other = NodePath("../RopeEnd")
+sprites = Array[CompressedTexture2D]([ExtResource("7_lifjv"), ExtResource("8_wqbis"), ExtResource("9_er3a0"), ExtResource("10_r1f8p")])
+radius = 500.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="RopeHolder"]
+modulate = Color(0, 0.796078, 0.796078, 1)
+z_index = 2
+emitting = false
+texture = ExtResource("11_pekvj")
+emission_shape = 1
+emission_sphere_radius = 55.0
+gravity = Vector2(0, 200)
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="RopeHolder"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ux4wa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeHolder"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CapsuleShape2D_hkmk8")
+
+[node name="Area2D" type="Area2D" parent="RopeHolder" groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeHolder/Area2D"]
+shape = SubResource("RectangleShape2D_ctlog")
+
+[node name="RayCast2D" type="RayCast2D" parent="RopeHolder"]
+target_position = Vector2(-1, 77)
+
+[node name="RayCast2D2" type="RayCast2D" parent="RopeHolder"]
+position = Vector2(-39, 0)
+target_position = Vector2(-1, 77)
+
+[node name="RayCast2D3" type="RayCast2D" parent="RopeHolder"]
+position = Vector2(48, 0)
+target_position = Vector2(-1, 77)
+
+[node name="Ropes" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 0)
+node_a = NodePath("../../RopeHolder")
+node_b = NodePath("../Rope Segment")
+
+[node name="Rope Segment" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 33)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 62)
+node_a = NodePath("../Rope Segment")
+node_b = NodePath("../Rope Segment2")
+
+[node name="Rope Segment2" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 92)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 122)
+node_a = NodePath("../Rope Segment2")
+node_b = NodePath("../Rope Segment3")
+
+[node name="Rope Segment3" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 152)
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 182)
+node_a = NodePath("../Rope Segment3")
+node_b = NodePath("../Rope Segment4")
+
+[node name="Rope Segment4" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 212)
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 242)
+node_a = NodePath("../Rope Segment4")
+node_b = NodePath("../Rope Segment5")
+
+[node name="Rope Segment5" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 272)
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 302)
+node_a = NodePath("../Rope Segment5")
+node_b = NodePath("../Rope Segment6")
+
+[node name="Rope Segment6" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 331)
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 361)
+node_a = NodePath("../Rope Segment6")
+node_b = NodePath("../Rope Segment7")
+
+[node name="Rope Segment7" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 391)
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 421)
+node_a = NodePath("../Rope Segment7")
+node_b = NodePath("../Rope Segment8")
+
+[node name="Rope Segment8" parent="Ropes" instance=ExtResource("2_dqag4")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 450)
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="Ropes"]
+position = Vector2(-0.5, 480)
+node_a = NodePath("../Rope Segment8")
+node_b = NodePath("../../RopeEnd")
+
+[node name="RopeEnd" type="CharacterBody2D" parent="." node_paths=PackedStringArray("other")]
+z_index = 1
+position = Vector2(480, 1)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ij5bj")
+other = NodePath("../RopeHolder")
+sprites = Array[CompressedTexture2D]([ExtResource("7_lifjv"), ExtResource("8_wqbis"), ExtResource("9_er3a0"), ExtResource("10_r1f8p")])
+radius = 500.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="RopeEnd"]
+modulate = Color(0, 0.796078, 0.796078, 1)
+z_index = 2
+position = Vector2(1, -1)
+emitting = false
+texture = ExtResource("11_pekvj")
+emission_shape = 1
+emission_sphere_radius = 55.0
+gravity = Vector2(0, 200)
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="RopeEnd"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_g6g6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeEnd"]
+shape = SubResource("CapsuleShape2D_vwofg")
+
+[node name="Area2D" type="Area2D" parent="RopeEnd" groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeEnd/Area2D"]
+shape = SubResource("RectangleShape2D_b643p")
+
+[node name="RayCast2D" type="RayCast2D" parent="RopeEnd"]
+target_position = Vector2(0, 77)
+
+[node name="RayCast2D2" type="RayCast2D" parent="RopeEnd"]
+position = Vector2(-39, 0)
+target_position = Vector2(-1, 77)
+
+[node name="RayCast2D3" type="RayCast2D" parent="RopeEnd"]
+position = Vector2(48, 0)
+target_position = Vector2(-1, 77)
+
+[connection signal="area_entered" from="RopeHolder/Area2D" to="RopeHolder" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="RopeHolder/Area2D" to="RopeHolder" method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="RopeHolder/Area2D" to="RopeHolder" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="RopeEnd/Area2D" to="RopeHolder" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="RopeEnd/Area2D" to="RopeEnd" method="_on_area_2d_input_event"]

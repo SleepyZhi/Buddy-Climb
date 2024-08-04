@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://5tug3r3trx4q"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_hrxvf"]
+[ext_resource type="PackedScene" uid="uid://djup1kvv55j4m" path="res://Assets/Nature/platform.tscn" id="2_q0msg"]
+[ext_resource type="Texture2D" uid="uid://djwr7g6mouxn0" path="res://Assets/Nature/Tree (2).png" id="2_t8e2d"]
+[ext_resource type="PackedScene" uid="uid://b3g00cx50w5om" path="res://Assets/Nature/platform 2.tscn" id="3_350jh"]
+[ext_resource type="PackedScene" uid="uid://qlrj7044aeil" path="res://Assets/Nature/platform 3.tscn" id="4_egkgy"]
+
+[node name="Level 2" type="Node2D" groups=["bg"]]
+script = ExtResource("1_hrxvf")
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 511)
+texture = ExtResource("2_t8e2d")
+
+[node name="Platform" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(-209, 1657)
+
+[node name="Leaf 2" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(207, 1233)
+
+[node name="Platform2" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(19, 1417)
+
+[node name="Leaf 3" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(-213, 1149)
+
+[node name="Leaf 4" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(-45, 1085)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_egkgy")]
+position = Vector2(-13, 849)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_egkgy")]
+position = Vector2(-181, 725)
+
+[node name="Leaf 5" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(179, 697)
+
+[node name="Leaf 6" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(-15, 495)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("4_egkgy")]
+position = Vector2(-139, 226)
+
+[node name="Platform3" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(-128, 339)
+
+[node name="Platform4" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(152, 133)
+
+[node name="Leaf 7" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(-250, -99)
+
+[node name="Leaf 8" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(189, -331)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("4_egkgy")]
+position = Vector2(98, -142)
+
+[node name="Platform5" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(-172, -355)
+
+[node name="Leaf 9" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(74, -555)
+
+[node name="Leaf 10" parent="." instance=ExtResource("3_350jh")]
+position = Vector2(-83, -523)
+
+[node name="Platform6" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(-236, -684)
+
+[node name="Platform7" parent="." instance=ExtResource("2_q0msg")]
+position = Vector2(346, -668)

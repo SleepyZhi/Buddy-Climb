@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://qlrj7044aeil"]
+
+[ext_resource type="Texture2D" uid="uid://dduevhnet3ps4" path="res://Assets/Nature/Coconut.png" id="1_cwtqx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52t1c"]
+radius = 46.1736
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["platform"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_cwtqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_52t1c")
+one_way_collision_margin = 0.1

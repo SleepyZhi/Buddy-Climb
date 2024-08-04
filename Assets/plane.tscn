@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6a5sknxpuevs"]
+
+[ext_resource type="Script" path="res://Scripts/Plane.gd" id="1_jkruh"]
+[ext_resource type="Texture2D" uid="uid://bsu4asytq5gjn" path="res://Assets/airplane.png" id="2_k0dp3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0iisy"]
+radius = 37.0
+height = 176.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87es4"]
+radius = 30.0
+height = 210.0
+
+[node name="Plane" type="Area2D"]
+script = ExtResource("1_jkruh")
+slow = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_k0dp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0iisy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_87es4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

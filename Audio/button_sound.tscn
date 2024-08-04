@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://6osurcsjqbfv"]
+
+[ext_resource type="AudioStream" uid="uid://bkluxowqiymlb" path="res://Audio/Click.ogg" id="1_0lw8m"]
+[ext_resource type="Script" path="res://Scripts/ButtonSound.gd" id="2_8m6lc"]
+
+[node name="ButtonSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_0lw8m")
+script = ExtResource("2_8m6lc")

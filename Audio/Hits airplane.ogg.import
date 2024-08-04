@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dpglfd1vmibdq"
+path="res://.godot/imported/Hits airplane.ogg-3b25cb5c85e20e1c287180c93cebce9f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Hits airplane.ogg"
+dest_files=["res://.godot/imported/Hits airplane.ogg-3b25cb5c85e20e1c287180c93cebce9f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
